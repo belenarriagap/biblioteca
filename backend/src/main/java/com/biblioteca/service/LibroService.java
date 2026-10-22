@@ -2,16 +2,21 @@ package com.biblioteca.service;
 
 import com.biblioteca.model.Libro;
 import com.biblioteca.repository.LibroRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class LibroService {
 
-    @Autowired
-    private LibroRepository repository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(LibroService.class);
+
+    private final LibroRepository repository;
+
+    public LibroService(LibroRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Libro> listar() {
         return repository.findAll();
@@ -22,15 +27,11 @@ public class LibroService {
     }
 
     public Libro guardar(Libro libro) {
-        System.out.println("Guardando libro: " + libro.getTitulo());
+        LOGGER.info("Guardando libro: {}", libro.getTitulo());
         return repository.save(libro);
     }
 
     public void eliminar(Long id) {
-        try {
-            repository.deleteById(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        repository.deleteById(id);
     }
 }
