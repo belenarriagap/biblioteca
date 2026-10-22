@@ -1,0 +1,35 @@
+
+Linting "frontend"...
+
+/root/biblioteca/frontend/src/app/components/libro-lista/libro-lista.html
+  30:15  error  click must be accompanied by either keyup, keydown or keypress event for accessibility  @angular-eslint/template/click-events-have-key-events
+  30:15  error  Elements with interaction handlers must be focusable                                    @angular-eslint/template/interactive-supports-focus
+  35:3   error  <img/> element must have a text alternative                                             @angular-eslint/template/alt-text
+
+/root/biblioteca/frontend/src/app/components/libro-lista/libro-lista.ts
+   7:13  error  The selector should start with one of these prefixes: "app" (https://angular.dev/style-guide#choosing-component-selectors)                                              @angular-eslint/component-selector
+  13:11  error  Unexpected any. Specify a different type                                                                                                                                @typescript-eslint/no-explicit-any
+  14:3   error  Type string trivially inferred from a string literal, remove type annotation                                                                                            @typescript-eslint/no-inferrable-types
+  16:3   error  Type string trivially inferred from a string literal, remove type annotation                                                                                            @typescript-eslint/no-inferrable-types
+  17:3   error  Type number trivially inferred from a number literal, remove type annotation                                                                                            @typescript-eslint/no-inferrable-types
+  19:15  error  Prefer using the inject() function over constructor parameter injection. Use Angular's migration schematic to automatically refactor: ng generate @angular/core:inject  @angular-eslint/prefer-inject
+  25:3   error  Lifecycle methods should not be empty                                                                                                                                   @angular-eslint/no-empty-lifecycle-method
+  25:23  error  Unexpected empty method 'ngOnDestroy'                                                                                                                                   @typescript-eslint/no-empty-function
+  28:49  error  Unexpected any. Specify a different type                                                                                                                                @typescript-eslint/no-explicit-any
+  34:5   error  Unexpected var, use let or const instead                                                                                                                                no-var
+  43:9   error  'resultado' is defined but never used                                                                                                                                   @typescript-eslint/no-unused-vars
+  43:20  error  Unexpected any. Specify a different type                                                                                                                                @typescript-eslint/no-explicit-any
+
+/root/biblioteca/frontend/src/app/services/libro.service.ts
+  10:3   error  Type string trivially inferred from a string literal, remove type annotation                                                                                            @typescript-eslint/no-inferrable-types
+  12:15  error  Prefer using the inject() function over constructor parameter injection. Use Angular's migration schematic to automatically refactor: ng generate @angular/core:inject  @angular-eslint/prefer-inject
+  14:24  error  Unexpected any. Specify a different type                                                                                                                                @typescript-eslint/no-explicit-any
+  15:26  error  Unexpected any. Specify a different type                                                                                                                                @typescript-eslint/no-explicit-any
+  19:9   error  'url' is never reassigned. Use 'const' instead                                                                                                                          prefer-const
+  23:18  error  Unexpected any. Specify a different type                                                                                                                                @typescript-eslint/no-explicit-any
+
+✖ 21 problems (21 errors, 0 warnings)
+  6 errors and 0 warnings potentially fixable with the `--fix` option.
+
+Lint errors found in the listed files.
+
