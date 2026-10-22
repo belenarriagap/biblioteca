@@ -13,8 +13,8 @@
 
 <section class="panel">
   <h2>Catálogo</h2>
-  <input [(ngModel)]="filtro" name="filtro" placeholder="Buscar por título" />
-  <button (click)="buscar()">Buscar</button>
+  <input [(ngModel)]="filtro" name="filtro" placeholder="Buscar por título" aria-label="Buscar por título" />
+  <button type="button" (click)="buscar()">Buscar</button>
 
   <table>
     <thead>
@@ -27,10 +27,10 @@
           <td>{{ libro.autor }}</td>
           <td>{{ libro.anioPublicacion }}</td>
           <td>{{ libro.disponible ? 'Disponible' : 'Prestado' }}</td>
-          <td><span class="eliminar" (click)="eliminar(libro.id)">Eliminar</span></td>
+          <td><button type="button" class="eliminar" (click)="eliminar(libro)">Eliminar</button></td>
         </tr>
       }
     </tbody>
   </table>
-  <img src="logo-biblioteca.png" />
+  <img src="logo-biblioteca.png" alt="Logotipo de la biblioteca" />
 </section>

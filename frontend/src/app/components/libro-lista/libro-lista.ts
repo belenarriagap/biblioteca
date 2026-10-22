@@ -1,38 +1,41 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LibroService } from '../../services/libro.service';
 import { Libro } from '../../models/libro';
 
+const ANIO_POR_DEFECTO = 2024;
+
+function libroVacio(): Libro {
+  return { titulo: '', autor: '', anioPublicacion: ANIO_POR_DEFECTO, disponible: true };
+}
+
 @Component({
-  selector: 'libro-lista',
+  selector: 'app-libro-lista',
   imports: [FormsModule],
   templateUrl: './libro-lista.html',
   styleUrl: './libro-lista.css'
 })
-export class LibroLista implements OnInit, OnDestroy {
-  libros: any[] = [];
-  filtro: string = '';
-  nuevo: Libro = { titulo: '', autor: '', anioPublicacion: 2024, disponible: true };
-  mensaje: string = '';
-  totalPaginas: number = 0;
+export class LibroLista implements OnInit {
+  private readonly libroService = inject(LibroService);
 
-  constructor(private libroService: LibroService) {}
+  libros: Libro[] = [];
+  filtro = '';
+  nuevo: Libro = libroVacio();
+  mensaje = '';
 
   ngOnInit(): void {
     this.cargar();
   }
 
-  ngOnDestroy(): void {}
-
   cargar(): void {
-    this.libroService.listar().subscribe((data: any) => {
+    this.libroService.listar().subscribe(data => {
       this.libros = data;
     });
   }
 
   buscar(): void {
-    var texto = this.filtro.trim();
-    if (texto == '') {
+    const texto = this.filtro.trim();
+    if (texto === '') {
       this.cargar();
       return;
     }
@@ -40,19 +43,21 @@ export class LibroLista implements OnInit, OnDestroy {
   }
 
   guardar(): void {
-    let resultado: any;
-    if (this.nuevo.titulo == '' || this.nuevo.autor == '') {
+    if (this.nuevo.titulo === '' || this.nuevo.autor === '') {
       this.mensaje = 'Título y autor son obligatorios';
       return;
     }
     this.libroService.guardar(this.nuevo).subscribe(() => {
       this.mensaje = 'Libro registrado';
-      this.nuevo = { titulo: '', autor: '', anioPublicacion: 2024, disponible: true };
+      this.nuevo = libroVacio();
       this.cargar();
     });
   }
 
-  eliminar(id: number): void {
-    this.libroService.eliminar(id).subscribe(() => this.cargar());
+  eliminar(libro: Libro): void {
+    if (libro.id === undefined) {
+      return;
+    }
+    this.libroService.eliminar(libro.id).subscribe(() => this.cargar());
   }
 }
