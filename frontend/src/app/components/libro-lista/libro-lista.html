@@ -1,0 +1,36 @@
+<section class="panel">
+  <h2>Registrar libro</h2>
+  <form (ngSubmit)="guardar()">
+    <input [(ngModel)]="nuevo.titulo" name="titulo" placeholder="Título" />
+    <input [(ngModel)]="nuevo.autor" name="autor" placeholder="Autor" />
+    <input type="number" [(ngModel)]="nuevo.anioPublicacion" name="anio" placeholder="Año" />
+    <button type="submit">Guardar</button>
+  </form>
+  @if (mensaje) {
+    <p class="mensaje">{{ mensaje }}</p>
+  }
+</section>
+
+<section class="panel">
+  <h2>Catálogo</h2>
+  <input [(ngModel)]="filtro" name="filtro" placeholder="Buscar por título" />
+  <button (click)="buscar()">Buscar</button>
+
+  <table>
+    <thead>
+      <tr><th>Título</th><th>Autor</th><th>Año</th><th>Estado</th><th></th></tr>
+    </thead>
+    <tbody>
+      @for (libro of libros; track libro.id) {
+        <tr>
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.autor }}</td>
+          <td>{{ libro.anioPublicacion }}</td>
+          <td>{{ libro.disponible ? 'Disponible' : 'Prestado' }}</td>
+          <td><span class="eliminar" (click)="eliminar(libro.id)">Eliminar</span></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <img src="logo-biblioteca.png" />
+</section>

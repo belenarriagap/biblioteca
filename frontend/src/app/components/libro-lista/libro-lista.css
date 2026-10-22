@@ -1,0 +1,8 @@
+.panel { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+form, .panel > input { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+input { padding: 6px 8px; border: 1px solid #bbb; border-radius: 4px; }
+button { padding: 6px 12px; background: #1e5aa8; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+th, td { text-align: left; padding: 6px; border-bottom: 1px solid #eee; }
+.eliminar { color: #b3261e; cursor: pointer; background: none; padding: 0; }
+.mensaje { color: #1b6e2f; }

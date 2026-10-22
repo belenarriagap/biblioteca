@@ -1,0 +1,3 @@
+:host { display: block; font-family: system-ui, sans-serif; background: #f4f6f9; min-height: 100vh; }
+.cabecera { background: #1e5aa8; color: #fff; padding: 12px 24px; }
+.contenido { max-width: 900px; margin: 0 auto; padding: 16px; }
